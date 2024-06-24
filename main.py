@@ -14,13 +14,6 @@ from PIL import Image
 import cv2
 from pynput import mouse
 
-#
-# from tensorflow.keras.models import Model
-# from tensorflow.keras.layers import Input, Dense, Lambda, Layer
-# from tensorflow.keras import backend as K
-# from tensorflow.keras.losses import mse
-# from tensorflow.keras.optimizers import Adam
-
 # Coordinates for the mouse click
 x, y = 1800, 1000  # Change this to your desired coordinates
 press_times = []
@@ -83,8 +76,8 @@ def click_mouse(x, y):
     release = 0.2
 
     pyautogui.moveTo(x, y)
+    # Here starts the random input that is working
 
-    # HARDCODING TODO!
     press = random.uniform(9.8, 10.25)  # Random double between 0.7 and 0.9
     release = random.uniform(0.4, 0.6)  # Random double between 0.1 and 0.3
     print(press)
@@ -104,7 +97,7 @@ def click_mouse(x, y):
     print(press)
     press_release(press, release)
 
-    # Egyenes vege, utolso kanyar: TODO
+    # Egyenes vege, utolso kanyar:
 
     click_count = 4
     while click_count > 0:
@@ -218,11 +211,6 @@ def on_click(x, y, button, pressed):
             press_duration = current_time - press_times[-1]
             press_durations.append(press_duration)
 
-    # For demonstration purposes, also stop after a certain number of clicks
-    # if len(press_durations) >= 5:  # Adjust this number as needed
-    #     print(press_durations)
-    #     return False
-
 
 def manual_input():
     # MANUAL ----------------------------------------------------------------------
@@ -261,15 +249,6 @@ def pad_sequences(sequences, maxlen, padding_value=0.0):
             padded_seq = seq[:maxlen]
         padded_sequences.append(padded_seq)
     return padded_sequences
-
-
-# # Define sampling function
-# def sampling(args):
-#     z_mean, z_log_var = args
-#     batch = K.shape(z_mean)[0]
-#     dim = K.int_shape(z_mean)[1]
-#     epsilon = K.random_normal(shape=(batch, dim))
-#     return z_mean + K.exp(0.5 * z_log_var) * epsilon
 
 
 def test_ai_suggestion():
